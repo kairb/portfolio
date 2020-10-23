@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql, StaticQuery } from "gatsby"
 
+
 const Language = () => (
   <StaticQuery
     query={graphql`

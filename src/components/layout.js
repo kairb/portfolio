@@ -1,48 +1,61 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-
+import { makeStyles } from "@material-ui/styles"
+import WebFont from "webfontloader"
 import Header from "./header"
 import "./layout.css"
 
+WebFont.load({
+  google: {
+    // Poppins:wght@400;700
+    families: ["Poppin wght:300,400,700", "sans-serif"],
+  },
+})
+
+const useStyles = makeStyles({
+  root: {
+    backgroundColor: "#E9EDEE",
+    width: "auto",
+    height: "100vh",
+    paddingLeft: "15%",
+    paddingRight: "15%",
+    margin: "0",
+    display: "flex",
+    justifyContent: "space-between",
+    flexDirection: "column",
+    fontFamily: "Poppins, sans-serif",
+    flexGrow: "1",
+  },
+  footer: {
+    display: "flex",
+    justifyContent: "center",
+  },
+  main:{
+    flexGrow:'1'
+  },
+})
+
 const Layout = ({ children }) => {
+  const classes = useStyles()
   const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
+    query MyQuery {
+      contentfulPerson {
+        id
+        name
+        firstName
       }
     }
   `)
 
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer style={{
-          marginTop: `2rem`
-        }}>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div>
-    </>
+    <div className={classes.root}>
+      <Header data={data} />
+      <main className={classes.main}>{children}</main>
+      <footer className={classes.footer}>
+        {data.contentfulPerson.name} {new Date().getFullYear()}
+      </footer>
+    </div>
   )
 }
 
