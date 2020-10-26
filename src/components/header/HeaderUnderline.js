@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 })
 
 const getPathName = () => {
-  return typeof window !== "undefined" ? window.location.pathname : "/"
+  return typeof window !== "undefined" ? window.location.pathname : ""
 }
 
 const HeaderUnderline = ({ route }) => {
