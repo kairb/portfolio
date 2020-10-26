@@ -2,16 +2,8 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { makeStyles } from "@material-ui/styles"
-import WebFont from "webfontloader"
-import Header from "./header"
+import Header from "./header/Header"
 import "./layout.css"
-
-WebFont.load({
-  google: {
-    // Poppins:wght@400;700
-    families: ["Poppin wght:300,400,700", "sans-serif"],
-  },
-})
 
 const useStyles = makeStyles({
   root: {

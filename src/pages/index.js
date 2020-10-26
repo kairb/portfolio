@@ -5,11 +5,19 @@ import { makeStyles } from '@material-ui/styles'
 import Layout from "../components/layout"
 
 const useStyles = makeStyles({
-  greeting: {
-    fontSize: "40px",
+  homePage:{
+    height:'100%',
+    width:'100%',
+    display: 'flex',
+    alignItems:'center'
   },
   greetingContainer:{
-
+    marginBottom:'30px',
+    "& h1":{
+      fontSize: "40px",
+      fontWeight: 400,
+      margin:0
+    }
   }
 })
 
@@ -26,10 +34,12 @@ const IndexPage = () => {
   `)
   return (
     <Layout>
-      <div className={classes.greetingContainer}>
-        <h1 className={classes.greeting}>{data.contentfulHomePage.line1}</h1>
-        <h1 className={classes.greeting}>{data.contentfulHomePage.line2}</h1>
-        <h1 className={classes.greeting}>{data.contentfulHomePage.line3}</h1>
+      <div className={classes.homePage}>
+        <div className={classes.greetingContainer}>
+          <h1>{data.contentfulHomePage.line1}</h1>
+          <h1>{data.contentfulHomePage.line2}</h1>
+          <h1>{data.contentfulHomePage.line3}</h1>
+        </div>
       </div>
     </Layout>
   )
