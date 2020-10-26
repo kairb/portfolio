@@ -1,27 +1,14 @@
 import React from "react"
-import { graphql, StaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 
 
-const Language = () => (
-  <StaticQuery
-    query={graphql`
-      {
-        allContentfulProgrammingLanguage {
-          nodes {
-            programmingLanguage
-          }
-        }
-      }
-    `}
-    render={data => (
-      <header>
-        <h1>
-          {data.allContentfulProgrammingLanguage.nodes[0].programmingLanguage}
-        </h1>
-      </header>
-    )}
-  />
-)
+const Technology = () => {
+  return (
+    <h1>
+      tech
+    </h1>
+  )
+}
 
 
-export default Language
+export default Technology

@@ -1,16 +1,41 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, useStaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Project from '../components/project/Project'
 
-const SecondPage = () => (
-  <Layout>
-    <SEO title="Page two" />
-    <h1>Hi from the second page</h1>
-    <p>Welcome to page 2</p>
-    <Link to="/">Go back to the homepage</Link>
-  </Layout>
-)
+const Experience = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      allContentfulExperience {
+        nodes {
+          company
+          description {
+            description
+          }
+          technologies {
+            technology
+            logo {
+              id
+              file {
+                url
+              }
+            }
+          }
+        }
+      }
+    }`)
 
-export default SecondPage
+    return (
+      <Layout>
+        <SEO title="Experience" />
+        {data.allContentfulExperience.nodes.map((exp) => 
+          <Project project={exp} />
+        )}
+      </Layout>
+    )
+  
+  }
+
+export default Experience
