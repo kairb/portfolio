@@ -32,19 +32,19 @@ const Header = () => {
     <header className={classes.header}>
       <Link to="/" activeClassName={classes.activeLink}>
         <h1>Home</h1>
-        <HeaderUnderline route="/" />
+        {/* <HeaderUnderline route="/" /> */}
       </Link>
       <Link to="/experience" activeClassName={classes.activeLink}>
         <h1>Experience</h1>
-        <HeaderUnderline route="experience" />
+        {/* <HeaderUnderline route="experience" /> */}
       </Link>
       <Link to="/blog" activeClassName={classes.activeLink}>
         <h1>Blog</h1>
-        <HeaderUnderline route="blog" />
+        {/* <HeaderUnderline route="blog" /> */}
       </Link>
       <Link to="/contact" activeClassName={classes.activeLink}>
         <h1>Contact</h1>
-        <HeaderUnderline route="contact" />
+        {/* <HeaderUnderline route="contact" /> */}
       </Link>
     </header>
   )
