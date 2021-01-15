@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import { makeStyles } from "@material-ui/styles"
 
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 const useStyles = makeStyles({
   homePage: {
@@ -13,11 +14,6 @@ const useStyles = makeStyles({
   },
   greetingContainer: {
     marginBottom: "30px",
-    "& h1": {
-      fontSize: "40px",
-      fontWeight: 400,
-      margin: 0,
-    },
   },
 })
 
@@ -34,6 +30,7 @@ const IndexPage = () => {
   `)
   return (
     <Layout>
+      <SEO title="Home" />
       <div className={classes.homePage}>
         <div className={classes.greetingContainer}>
           <h1>{data.contentfulHomePage.line1}</h1>

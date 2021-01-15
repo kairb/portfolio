@@ -1,16 +1,59 @@
 import React from "react"
-import { Link } from "gatsby"
+import { useStaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Project from '../components/project/Project'
+import {makeStyles} from '@material-ui/styles'
 
-const SecondPage = () => (
-  <Layout>
-    <SEO title="Page two" />
-    <h1>Hi from the second page</h1>
-    <p>Welcome to page 2</p>
-    <Link to="/">Go back to the homepage</Link>
-  </Layout>
-)
+const useStyles = makeStyles({
+  experiencePage:{
+    width:'100%',
+    height:'100%'
+  },
+  project:{
+    paddingBottom:'30px'
+  }
+})
 
-export default SecondPage
+const Experience = () => {
+  const classes = useStyles()
+  const data = useStaticQuery(graphql`
+    query{
+      allContentfulExperience {
+        nodes {
+          company
+          description {
+            description
+          }
+          technologies {
+            technology
+            logo {
+              description
+              id
+              file {
+                url
+              }
+            }
+          }
+          from
+          to
+        }
+      }
+    }
+  `)
+
+    return (
+      <Layout>
+        <SEO title="Experience" />
+        <div className={classes.experiencePage}>
+          {data.allContentfulExperience.nodes.map((exp) => 
+            <Project className={classes.project} project={exp} />
+          )}
+        </div>
+      </Layout>
+    )
+  
+  }
+
+export default Experience
