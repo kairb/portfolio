@@ -14,11 +14,6 @@ const useStyles = makeStyles({
   },
   greetingContainer: {
     marginBottom: "30px",
-    "& h1": {
-      fontSize: "40px",
-      fontWeight: 400,
-      margin: 0,
-    },
   },
 })
 

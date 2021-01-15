@@ -18,13 +18,33 @@ const useStyles = makeStyles({
     flexDirection: "column",
     fontFamily: "Poppins, sans-serif",
     flexGrow: "1",
+    "& h1": {
+      fontSize: "40px",
+      fontWeight: 400,
+      margin: 0,
+    },
+    "& h2": {
+      fontSize: "36px",
+      fontWeight: 300,
+      margin: 0,
+    },
+    "& h3": {
+      fontSize: "30px",
+      fontWeight: 200,
+      margin: 0,
+    },
+    "& p": {
+      fontSize: "24px",
+      fontWeight: 400,
+      margin: 0,
+    },
   },
   footer: {
     display: "flex",
     justifyContent: "center",
   },
-  main:{
-    flexGrow:'1'
+  main: {
+    flexGrow: "1",
   },
 })
 
