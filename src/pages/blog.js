@@ -1,6 +1,6 @@
-import React from "react"
+import React from 'react';
 
-import SEO from "../components/seo"
+import SEO from '../components/seo';
 
 const SecondPage = () => {
   // const data = useStaticQuery(graphql`
@@ -19,7 +19,7 @@ const SecondPage = () => {
       <p>Welcome to page 2</p>
       {/* <Link to="/">Go back to the homepage</Link> */}
     </>
-  )
-}
+  );
+};
 
-export default SecondPage
+export default SecondPage;
