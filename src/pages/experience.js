@@ -1,6 +1,7 @@
 import React from "react"
 import { useStaticQuery } from "gatsby"
 import SEO from "../components/seo"
+
 import Project from "../components/Project/Project"
 import { makeStyles } from "@material-ui/styles"
 
