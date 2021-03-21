@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kai Roper-Blackman",
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
     "@material-ui/styles": "^4.10.0",
     "dotenv": "^8.2.0",
     "gatsby": "^2.24.85",
