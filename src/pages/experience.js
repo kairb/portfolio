@@ -1,9 +1,8 @@
-import React from "react"
-import { useStaticQuery } from "gatsby"
-import SEO from "../components/seo"
-
-import Project from "../components/Project/Project"
-import { makeStyles } from "@material-ui/styles"
+import React from 'react';
+import { useStaticQuery } from 'gatsby';
+import SEO from '../components/seo';
+import { Project } from '../components/Project';
+import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   root: {
@@ -11,12 +10,12 @@ const useStyles = makeStyles({
     // height: "100%",
   },
   project: {
-    margin: "20px 0px",
+    margin: '20px 0px',
   },
-})
+});
 
 const Experience = () => {
-  const classes = useStyles()
+  const classes = useStyles();
   const data = useStaticQuery(graphql`
     query {
       allContentfulExperience {
@@ -41,7 +40,7 @@ const Experience = () => {
         }
       }
     }
-  `)
+  `);
 
   return (
     <>
@@ -54,7 +53,7 @@ const Experience = () => {
         ))}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Experience
+export default Experience;
