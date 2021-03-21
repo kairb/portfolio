@@ -1,50 +1,61 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import { makeStyles } from "@material-ui/styles"
+import { makeStyles } from "@material-ui/core"
 import Header from "./header/Header"
 import "./layout.css"
+import theme from "../theme"
 
 const useStyles = makeStyles({
   root: {
     backgroundColor: "#E9EDEE",
-    width: "auto",
-    height: "100vh",
-    paddingLeft: "15%",
-    paddingRight: "15%",
-    margin: "0",
+    padding: "0 20px",
     display: "flex",
-    justifyContent: "space-between",
+    // justifyContent: "space-between",
     flexDirection: "column",
     fontFamily: "Poppins, sans-serif",
-    flexGrow: "1",
+    // flexGrow: "1",
+    [theme.breakpoints.up("md")]: {
+      minHeight: "100vh",
+      padding: "0 150px",
+    },
     "& h1": {
-      fontSize: "40px",
+      fontSize: "32px",
       fontWeight: 400,
       margin: 0,
+      [theme.breakpoints.up("md")]: {
+        fontSize: "40px",
+      },
     },
     "& h2": {
-      fontSize: "36px",
+      fontSize: "24px",
       fontWeight: 300,
       margin: 0,
+      [theme.breakpoints.up("md")]: {
+        fontSize: "30px",
+      },
     },
     "& h3": {
-      fontSize: "30px",
+      fontSize: "16px",
       fontWeight: 200,
       margin: 0,
+      [theme.breakpoints.up("md")]: {
+        fontSize: "20px",
+      },
     },
     "& p": {
-      fontSize: "24px",
+      fontSize: "13px",
       fontWeight: 400,
       margin: 0,
+      [theme.breakpoints.up("md")]: {
+        fontSize: "16px",
+      },
     },
   },
   footer: {
     display: "flex",
     justifyContent: "center",
-  },
-  main: {
-    flexGrow: "1",
+    justifySelf: "flex-end",
   },
 })
 
@@ -62,10 +73,11 @@ const Layout = ({ children }) => {
 
   return (
     <div className={classes.root}>
-      <Header data={data} />
+      <Header />
+      <div className={classes.temp}></div>
       <main className={classes.main}>{children}</main>
       <footer className={classes.footer}>
-        {data.contentfulPerson.name} {new Date().getFullYear()}
+        {`${data.contentfulPerson.name} ${new Date().getFullYear()}`}
       </footer>
     </div>
   )

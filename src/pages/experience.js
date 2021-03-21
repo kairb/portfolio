@@ -1,25 +1,23 @@
 import React from "react"
 import { useStaticQuery } from "gatsby"
-
-import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Project from '../components/project/Project'
-import {makeStyles} from '@material-ui/styles'
+import Project from "../components/Project/Project"
+import { makeStyles } from "@material-ui/styles"
 
 const useStyles = makeStyles({
-  experiencePage:{
-    width:'100%',
-    height:'100%'
+  root: {
+    // width: "100%",
+    // height: "100%",
   },
-  project:{
-    paddingBottom:'30px'
-  }
+  project: {
+    margin: "20px 0px",
+  },
 })
 
 const Experience = () => {
   const classes = useStyles()
   const data = useStaticQuery(graphql`
-    query{
+    query {
       allContentfulExperience {
         nodes {
           company
@@ -38,22 +36,24 @@ const Experience = () => {
           }
           from
           to
+          role
         }
       }
     }
   `)
 
-    return (
-      <Layout>
-        <SEO title="Experience" />
-        <div className={classes.experiencePage}>
-          {data.allContentfulExperience.nodes.map((exp) => 
-            <Project className={classes.project} project={exp} />
-          )}
-        </div>
-      </Layout>
-    )
-  
-  }
+  return (
+    <>
+      <SEO title="Experience" />
+      <div className={classes.root}>
+        {data.allContentfulExperience.nodes.map(exp => (
+          <div className={classes.project}>
+            <Project project={exp} />
+          </div>
+        ))}
+      </div>
+    </>
+  )
+}
 
 export default Experience
