@@ -24,6 +24,12 @@ const Experience = () => {
           description {
             description
           }
+          companyWebsite
+          companyLogo {
+            file {
+              url
+            }
+          }
           technologies {
             technology
             logo {

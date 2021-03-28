@@ -46,10 +46,10 @@ const IndexPage = () => {
           <h1>{data.contentfulHomePage.line2}</h1>
           <h1>{data.contentfulHomePage.line3}</h1>
         </div>
-        <Img
+        {/* <Img
           className={classes.image}
           fluid={data.contentfulHomePage.homepageImage.fluid}
-        />
+        /> */}
       </div>
     </>
   )

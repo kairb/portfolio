@@ -5,11 +5,15 @@ import theme from '../../theme';
 
 const useStyles = makeStyles({
   root: {
-    // width: "100%",
     backgroundColor: 'white',
-    borderRadius: '30px',
+    borderRadius: '20px',
     boxShadow: '0 0 8px #7f7f7f',
     padding: '20px',
+    display: 'flex',
+    flexDirection: 'column',
+    [theme.breakpoints.up('md')]: {
+      flexDirection: 'row',
+    },
   },
   title: {
     display: 'flex',
@@ -26,7 +30,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     [theme.breakpoints.up('md')]: {
-      flexDirection: 'row-reverse',
+      flexDirection: 'column-reverse',
       justifyContent: 'space-between',
     },
   },
@@ -34,6 +38,36 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
+    [theme.breakpoints.up('md')]: {
+      borderTop: '1px solid #E9EDEE',
+      justifyContent: 'flex-start',
+      paddingTop: '10px',
+    },
+  },
+  techLogo: {
+    width: '50px',
+    height: '50px',
+    marginRight: '5px',
+  },
+  companyLogo: {
+    display: 'flex',
+    justifyContent: 'center',
+    '& img': {
+      width: '100px',
+      height: 'auto',
+    },
+    [theme.breakpoints.up('md')]: {
+      minWidth: '150px',
+      minHeight: '150px',
+      maxWidth: '150px',
+      maxHeight: '150px',
+      paddingRight: '10px',
+      '& img': {
+        width: '100%',
+        height: 'auto',
+        objectFit: 'contain',
+      },
+    },
   },
 });
 
@@ -46,21 +80,42 @@ const convertDate = iso => {
 
 const Project = ({ project }) => {
   const classes = useStyles();
-  const { company, role, from, to, description, technologies } = project;
+  console.log(project);
+  const {
+    company,
+    role,
+    from,
+    to,
+    description,
+    technologies,
+    companyLogo,
+  } = project;
   return (
     <div className={classes.root}>
-      <div className={classes.title}>
-        <h1>{company}</h1>
-        <h2>{role}</h2>
-        <h3>{`${convertDate(from)} - ${convertDate(to)}`}</h3>
-      </div>
-      <div className={classes.info}>
-        <div className={classes.tech}>
-          {technologies.map(random => (
-            <Technology technology={random} />
-          ))}
+      {companyLogo && (
+        <div className={classes.companyLogo}>
+          <img src={companyLogo?.file.url} />
         </div>
-        <p>{description.description}</p>
+      )}
+
+      <div>
+        <div className={classes.title}>
+          <h1>{company}</h1>
+          <h2>{role}</h2>
+          <h3>{`${convertDate(from)} - ${convertDate(to)}`}</h3>
+        </div>
+        <div className={classes.info}>
+          <div className={classes.tech}>
+            {technologies.map(logo => (
+              <img
+                className={classes.techLogo}
+                src={logo.logo.file.url}
+                alt={`${logo.technology} logo`}
+              ></img>
+            ))}
+          </div>
+          <p>{description.description}</p>
+        </div>
       </div>
     </div>
   );
