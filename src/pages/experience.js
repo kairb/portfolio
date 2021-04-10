@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     // height: "100%",
   },
   project: {
-    margin: '20px 0px',
+    marginBottom: '20px',
   },
 });
 

@@ -17,6 +17,7 @@ const useStyles = makeStyles({
   mobile: {
     display: 'flex',
     justifyContent: 'flex-end',
+    marginBottom: '20px',
     [theme.breakpoints.up('md')]: {
       display: 'none',
     },
