@@ -11,11 +11,7 @@ const useStyles = makeStyles({
   app: {
     position: 'relative',
     backgroundColor: '#E9EDEE',
-    // padding: '20px',
     fontFamily: 'Poppins, sans-serif',
-    [theme.breakpoints.up('md')]: {
-      // padding: '0px',
-    },
     '& h1': {
       fontSize: '32px',
       fontWeight: 300,

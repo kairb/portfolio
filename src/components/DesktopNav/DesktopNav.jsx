@@ -6,19 +6,16 @@ import links from '../../links.json';
 
 const useStyles = makeStyles({
   desktop: {
-    [theme.breakpoints.down('sm')]: {
-      display: 'none',
-    },
     position: 'fixed',
     top: '0',
     right: '0',
-    width: '20vw',
-    marginLeft: '20vw',
-    backgroundColor: 'pink',
+    width: '30vw',
+    padding: '20px',
+    backgroundColor: 'white',
     height: '100vh',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     '& h1': {
       fontWeight: '400',
       color: 'grey',
@@ -30,11 +27,12 @@ const useStyles = makeStyles({
     '& h1:hover': {
       color: 'black',
     },
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
   },
   activeLink: {
-    '& h1': {
-      color: 'red',
-    },
+    color: 'black',
   },
 });
 
@@ -42,11 +40,13 @@ const DesktopNav = () => {
   const classes = useStyles();
   return (
     <header className={classes.desktop}>
-      {links.links.map(link => (
-        <Link to={`${link.slug}`} activeClassName={classes.activeLink}>
-          <h1>{link.name}</h1>
-        </Link>
-      ))}
+      <div className={classes.links}>
+        {links.links.map(link => (
+          <Link to={`${link.slug}`} className={classes.activeLink}>
+            <h1>{link.name}</h1>
+          </Link>
+        ))}
+      </div>
     </header>
   );
 };
