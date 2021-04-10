@@ -2,25 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 import { makeStyles } from '@material-ui/core';
-import Header from './header/Header';
+import MobileNav from './MobileNav/MobileNav';
 import theme from '../theme';
 import './layout.css';
-
+import DesktopNav from './DesktopNav';
 
 const useStyles = makeStyles({
   app: {
+    position: 'relative',
     backgroundColor: '#E9EDEE',
-    padding: '20px',
-    display: 'flex',
-    flexDirection: 'column',
+    // padding: '20px',
     fontFamily: 'Poppins, sans-serif',
     [theme.breakpoints.up('md')]: {
-      minHeight: '100vh',
-      padding: '0 150px',
+      // padding: '0px',
     },
     '& h1': {
       fontSize: '32px',
-      fontWeight: 400,
+      fontWeight: 300,
       margin: 0,
       [theme.breakpoints.up('md')]: {
         fontSize: '40px',
@@ -44,11 +42,29 @@ const useStyles = makeStyles({
     },
     '& p': {
       fontSize: '13px',
-      fontWeight: 400,
+      fontWeight: 300,
       margin: 0,
       [theme.breakpoints.up('md')]: {
         fontSize: '16px',
       },
+    },
+  },
+  desktopNav: {
+    display: 'none',
+    [theme.breakpoints.up('md')]: {
+      display: 'block',
+      width: '20vw',
+      padding: '0px',
+    },
+  },
+  main: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    minHeight: '100vh',
+    padding: '20px',
+    [theme.breakpoints.up('md')]: {
+      marginRight: '20vw',
     },
   },
   footer: {
@@ -72,11 +88,14 @@ const Layout = ({ children }) => {
 
   return (
     <div className={classes.app}>
-      <Header />
-      <main className={classes.main}>{children}</main>
-      <footer className={classes.footer}>
-        {`${data.contentfulPerson.name} ${new Date().getFullYear()}`}
-      </footer>
+      <DesktopNav />
+      <main className={classes.main}>
+        <MobileNav />
+        {children}
+        <footer className={classes.footer}>
+          {`${data.contentfulPerson.name} ${new Date().getFullYear()}`}
+        </footer>
+      </main>
     </div>
   );
 };
