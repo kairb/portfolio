@@ -80,7 +80,6 @@ const convertDate = iso => {
 
 const Project = ({ project }) => {
   const classes = useStyles();
-  console.log(project);
   const {
     company,
     role,
