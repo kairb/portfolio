@@ -1,0 +1,20 @@
+{
+  "links": [
+    {
+      "name": "Home",
+      "slug": "/"
+    },
+    {
+      "name": "Experience",
+      "slug": "/experience"
+    },
+    {
+      "name": "Blog",
+      "slug": "/blog"
+    },
+    {
+      "name": "Contact",
+      "slug": "/contact"
+    }
+  ]
+}
