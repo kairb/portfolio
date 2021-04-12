@@ -1,28 +1,33 @@
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import { makeStyles } from "@material-ui/styles"
-import Img from "gatsby-image"
-import SEO from "../components/seo"
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import { makeStyles } from '@material-ui/styles';
+import Img from 'gatsby-image';
+import SEO from '../components/seo';
 
 const useStyles = makeStyles({
   homePage: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
   },
   greetingContainer: {
-    marginBottom: "30px",
+    marginBottom: '30px',
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
   },
   image: {
-    height: "400px",
-    width: "400px",
-    borderRadius: "50%",
-    marginRight: "100px",
+    zIndex: '2',
+    height: '400px',
+    width: '400px',
+    borderRadius: '50%',
   },
-})
+});
 
 const IndexPage = () => {
-  const classes = useStyles()
+  const classes = useStyles();
   const data = useStaticQuery(graphql`
     query homePageQuery {
       contentfulHomePage {
@@ -36,23 +41,23 @@ const IndexPage = () => {
         }
       }
     }
-  `)
+  `);
   return (
     <>
       <SEO title="Home" />
       <div className={classes.homePage}>
+        <Img
+          className={classes.image}
+          fluid={data.contentfulHomePage.homepageImage.fluid}
+        />
         <div className={classes.greetingContainer}>
           <h1>{data.contentfulHomePage.line1}</h1>
           <h1>{data.contentfulHomePage.line2}</h1>
           <h1>{data.contentfulHomePage.line3}</h1>
         </div>
-        {/* <Img
-          className={classes.image}
-          fluid={data.contentfulHomePage.homepageImage.fluid}
-        /> */}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;

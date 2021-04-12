@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
+    zIndex: '9999',
     position: 'fixed',
     height: '100vh',
     width: '100vw',
