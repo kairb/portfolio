@@ -5,4 +5,12 @@
  */
 
 // You can delete this file if you're not using it
-export { wrapRootElement } from "./wrapRootElement"
+import ReactDOM from 'react-dom';
+
+export { wrapRootElement } from './wrapRootElement';
+
+export function replaceHydrateFunction() {
+  return (element, container, callback) => {
+    ReactDOM.render(element, container, callback);
+  };
+}
