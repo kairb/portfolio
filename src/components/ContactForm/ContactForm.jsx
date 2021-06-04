@@ -80,7 +80,7 @@ const ContactForm = ({ setSubmitted }) => {
           register={register('name', { required: true })}
           placeholder="John Doe"
           error={errors.name}
-					errorMessage="Please enter your name"
+          errorMessage="Please enter your name"
         />
         <Input
           label="Email Adress:"
@@ -88,8 +88,7 @@ const ContactForm = ({ setSubmitted }) => {
           register={register('email', { required: true, pattern: /^\S+@\S+$/ })}
           placeholder="john.doe@email.com"
           error={errors.email}
-					errorMessage="Please enter a valid email adress"
-
+          errorMessage="Please enter a valid email adress"
         />
       </div>
       <label>Message: </label>
