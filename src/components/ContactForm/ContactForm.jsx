@@ -5,6 +5,7 @@ import theme from '../../theme';
 import Input from '../Input/Input';
 import emailjs from 'emailjs-com';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const useStyles = makeStyles({
   form: {
@@ -43,32 +44,40 @@ const ContactForm = ({ setSubmitted }) => {
   } = useForm();
   const classes = useStyles();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [recapChecked, setRecapChecked] = useState(false);
+  const [recapError, setRecapError] = useState(false);
 
+  function recapInteraction(value) {
+    setRecapChecked(value);
+    setRecapError(!value);
+  }
   const handleSubmit = data => {
-    setIsSubmitting(true);
-    const templateParams = {
-      name: data.name,
-      email: data.email,
-      message: data.message,
-    };
-
-    emailjs
-      .send(
-        process.env.GATSBY_SERVICE_ID,
-        'template_dg04yxb',
-        templateParams,
-        process.env.GATSBY_USER_ID
-      )
-      .then(
-        response => {
-          setIsSubmitting(false);
-          setSubmitted(true);
-        },
-        err => {
-          alert('Oops- something went wrong. Please try again');
-          setIsSubmitting(false);
-        }
-      );
+    if (recapChecked) {
+      setIsSubmitting(true);
+      emailjs
+        .send(
+          process.env.GATSBY_SERVICE_ID,
+          'template_dg04yxb',
+          {
+            name: data.name,
+            email: data.email,
+            message: data.message,
+          },
+          process.env.GATSBY_USER_ID
+        )
+        .then(
+          response => {
+            setIsSubmitting(false);
+            setSubmitted(true);
+          },
+          err => {
+            alert('Oops- something went wrong. Please try again');
+            setIsSubmitting(false);
+          }
+        );
+    } else {
+      setRecapError(true);
+    }
   };
 
   return (
@@ -96,6 +105,11 @@ const ContactForm = ({ setSubmitted }) => {
         {...register('message', { required: true })}
         rows="7"
       ></textarea>
+      <ReCAPTCHA
+        sitekey={process.env.GATSBY_GOOGLE_SITE_KEY}
+        onChange={recapInteraction}
+      />
+      {recapError && <p>Are you a robot?</p>}
       <button type="submit" className={classes.button} disabled={isSubmitting}>
         {isSubmitting ? <CircularProgress /> : 'Submit'}
       </button>
