@@ -12,11 +12,6 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     margin: '30px 0px',
-    '& textarea': {
-      width: '100%',
-      margin: '10px 0px',
-      resize: 'none',
-    },
   },
   row: {
     width: '100%',
@@ -25,6 +20,12 @@ const useStyles = makeStyles({
     justifyContent: 'space-between',
     [theme.breakpoints.up('md')]: {
       flexDirection: 'row',
+      '& :first-child': {
+        paddingRight: '5px',
+      },
+      '& :nth-child(2)': {
+        paddingLeft: '5px',
+      },
     },
   },
 
@@ -100,11 +101,16 @@ const ContactForm = ({ setSubmitted }) => {
           errorMessage="Please enter a valid email adress"
         />
       </div>
-      <label>Message: </label>
-      <textarea
-        {...register('message', { required: true })}
-        rows="7"
-      ></textarea>
+
+      <Input
+        label="Message:"
+        type="textarea"
+        register={register('message', { required: true })}
+        placeholder="john.doe@email.com"
+        error={errors.message}
+        errorMessage="Please enter a message"
+      />
+
       <ReCAPTCHA
         sitekey={process.env.GATSBY_GOOGLE_SITE_KEY}
         onChange={recapInteraction}
