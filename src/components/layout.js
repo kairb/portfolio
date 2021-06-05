@@ -60,7 +60,7 @@ const useStyles = makeStyles({
     minHeight: '100vh',
     padding: '20px',
     [theme.breakpoints.up('md')]: {
-      marginRight: '30vw',
+      marginLeft: '25vw',
     },
   },
   footer: {

@@ -8,8 +8,8 @@ const useStyles = makeStyles({
   desktop: {
     position: 'fixed',
     top: '0',
-    right: '0',
-    width: '30vw',
+    left: '0',
+    width: '25vw',
     padding: '20px',
     backgroundColor: 'white',
     height: '100vh',
