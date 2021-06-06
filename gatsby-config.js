@@ -15,9 +15,6 @@ module.exports = {
         },
       },
     },
-    `gatsby-plugin-image`,
-    // `gatsby-transformer-sharp`,
-    // `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-source-contentful`,
       options: {
@@ -25,8 +22,8 @@ module.exports = {
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
   ],
-  flags: {
-    THE_FLAG: false,
-  },
 };
