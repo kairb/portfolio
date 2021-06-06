@@ -1,6 +1,5 @@
 import React from 'react';
 
-import SEO from '../components/seo';
 
 const SecondPage = () => {
   // const data = useStaticQuery(graphql`
@@ -14,7 +13,6 @@ const SecondPage = () => {
   // `)
   return (
     <>
-      <SEO title="Blog" />
       <h1>Blog</h1>
     </>
   );

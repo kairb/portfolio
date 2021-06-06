@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import SEO from '../components/seo';
 // import { makeStyles } from '@material-ui/core/styles';
 import ContactForm from '../components/ContactForm/ContactForm';
 
@@ -7,7 +6,6 @@ const SecondPage = () => {
   const [submitted, setSubmitted] = useState(false);
   return (
     <>
-      <SEO title="Contact" />
       {submitted ? (
         <h1>Thank you! I'll be in touch shortly</h1>
       ) : (

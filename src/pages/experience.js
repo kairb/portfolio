@@ -1,6 +1,5 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import SEO from '../components/seo';
 import Project from '../components/Project';
 import { makeStyles } from '@material-ui/styles';
 
@@ -50,7 +49,6 @@ const Experience = () => {
 
   return (
     <>
-      <SEO title="Experience" />
       <div className={classes.root}>
         {data.allContentfulExperience.nodes.map(exp => (
           <div className={classes.project}>

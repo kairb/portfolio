@@ -2,7 +2,6 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { makeStyles } from '@material-ui/styles';
 import Img from 'gatsby-image';
-import SEO from '../components/seo';
 
 const useStyles = makeStyles({
   homePage: {
@@ -44,7 +43,6 @@ const IndexPage = () => {
   `);
   return (
     <>
-      <SEO title="Home" />
       <div className={classes.homePage}>
         <Img
           className={classes.image}
