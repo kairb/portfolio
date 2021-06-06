@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import SEO from '../components/seo';
-// import makeStyles from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import ContactForm from '../components/ContactForm/ContactForm';
 
 const SecondPage = () => {
@@ -14,8 +14,8 @@ const SecondPage = () => {
         <>
           <h1>Contact</h1>
           <h2>
-            Doing something cool? feel free to drop me a message and I'll get back
-            to you as soon as possible
+            Doing something cool? feel free to drop me a message and I'll get
+            back to you as soon as possible
           </h2>
           <ContactForm setSubmitted={setSubmitted} />
         </>

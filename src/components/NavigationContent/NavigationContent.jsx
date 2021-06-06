@@ -1,7 +1,6 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'gatsby';
-import theme from '../../theme';
 import links from '../../links.json';
 import { useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
