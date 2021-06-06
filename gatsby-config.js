@@ -7,16 +7,15 @@ module.exports = {
     author: `@kairb`,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        stylesProvider: {
+          injectFirst: true,
+        },
+      },
+    },
     `gatsby-plugin-image`,
-    // {
-    //   resolve: 'gatsby-plugin-material-ui',
-    //   options: {
-    //     stylesProvider: {
-    //       injectFirst: false,
-    //     },
-    //   },
-    // },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
