@@ -20,6 +20,7 @@ module.exports = {
       options: {
         spaceId: `07s2g79fhx8u`,
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        downloadLocal: true,
       },
     },
     `gatsby-plugin-image`,
