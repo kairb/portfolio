@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import CloseIcon from '@material-ui/icons/Close';
 import { makeStyles } from '@material-ui/core/styles';
 import NavigationContent from '../NavigationContent';

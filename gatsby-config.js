@@ -16,8 +16,8 @@ module.exports = {
       },
     },
     `gatsby-plugin-image`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    // `gatsby-transformer-sharp`,
+    // `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-source-contentful`,
       options: {
@@ -26,4 +26,7 @@ module.exports = {
       },
     },
   ],
+  flags: {
+    THE_FLAG: false,
+  },
 };

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import SEO from '../components/seo';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import ContactForm from '../components/ContactForm/ContactForm';
 
 const SecondPage = () => {

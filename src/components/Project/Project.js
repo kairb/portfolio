@@ -92,7 +92,7 @@ const Project = ({ project }) => {
     <div className={classes.root}>
       {companyLogo && (
         <div className={classes.companyLogo}>
-          <img src={companyLogo?.file.url} />
+          <img src={companyLogo?.file.url} alt={company} />
         </div>
       )}
 
