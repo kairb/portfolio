@@ -4,8 +4,8 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { makeStyles } from '@material-ui/core';
 import MobileNav from './MobileNav/MobileNav';
 import theme from '../theme';
-import './layout.css';
-import DesktopNav from './DesktopNav';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import DesktopNav from './DesktopNav/DesktopNav';
 
 const useStyles = makeStyles({
   app: {
@@ -45,14 +45,6 @@ const useStyles = makeStyles({
       },
     },
   },
-  desktopNav: {
-    display: 'none',
-    [theme.breakpoints.up('md')]: {
-      display: 'block',
-      width: '20vw',
-      padding: '0px',
-    },
-  },
   main: {
     display: 'flex',
     flexDirection: 'column',
@@ -71,22 +63,22 @@ const useStyles = makeStyles({
 });
 
 const Layout = ({ children }) => {
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const classes = useStyles();
   const data = useStaticQuery(graphql`
     query MyQuery {
       contentfulPerson {
-        id
         name
-        firstName
       }
     }
   `);
 
   return (
     <div className={classes.app}>
-      <DesktopNav />
+      {!isMobile && <DesktopNav />}
       <main className={classes.main}>
-        <MobileNav />
+        {isMobile && <MobileNav />}
+
         {children}
         <footer className={classes.footer}>
           {`${data.contentfulPerson.name} ${new Date().getFullYear()}`}
