@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import CloseIcon from '@material-ui/icons/Close';
 import { makeStyles } from '@material-ui/core';
+import NavigationContent from '../NavigationContent';
 
 const useStyles = makeStyles({
   root: {
@@ -16,33 +17,13 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
   },
-  links: {
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    '& h1': {
-      fontWeight: '400',
-      color: 'grey',
-    },
-    '& a': {
-      textDecoration: 'none',
-      margin: '10px',
-    },
-  },
-  activeLink: {
-    '& h1': {
-      color: 'black',
-    },
-  },
   close: {
     display: 'flex',
     justifyContent: 'flex-end',
   },
 });
 
-const MobilePopup = ({ setOpen, links }) => {
+const MobilePopup = ({ setOpen }) => {
   const classes = useStyles();
   const close = () => setOpen(false);
   return (
@@ -50,18 +31,7 @@ const MobilePopup = ({ setOpen, links }) => {
       <div className={classes.close}>
         <CloseIcon onClick={close} />
       </div>
-      <div className={classes.links}>
-        {links.map(link => (
-          <Link
-            to={`${link.slug}`}
-            activeClassName={classes.activeLink}
-            onClick={close}
-            key={`mobile${link.name}`}
-          >
-            <h1>{link.name}</h1>
-          </Link>
-        ))}
-      </div>
+      <NavigationContent />
     </div>
   );
 };

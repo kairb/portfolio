@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core';
-import { Link } from 'gatsby';
-import HeaderUnderline from './HeaderUnderline';
 import theme from '../../theme';
-import links from '../../links.json';
 import MobilePopup from './MobilePopup';
 
 import MenuIcon from '@material-ui/icons/Menu';
@@ -40,7 +37,7 @@ const MobileNav = () => {
       <header className={classes.mobile}>
         <MenuIcon onClick={menuInteraction} />
       </header>
-      {open && <MobilePopup setOpen={setOpen} links={links.links} />}
+      {open && <MobilePopup setOpen={setOpen} />}
     </>
   );
 };
