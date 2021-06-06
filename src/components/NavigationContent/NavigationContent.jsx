@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'gatsby';
 import links from '../../links.json';
 import { useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
 
 const useStyles = makeStyles({
   desktop: {
@@ -67,7 +66,7 @@ const DesktopNav = () => {
     <header className={classes.desktop}>
       <div className={classes.profile}>
         <div>
-          <Img className={classes.profileImage} fluid={fluid} />
+          {/* <Img className={classes.profileImage} fluid={fluid} /> */}
         </div>
         <h2>{name}</h2>
         <h3>{jobTitle}</h3>

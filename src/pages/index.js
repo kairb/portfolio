@@ -1,7 +1,6 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { makeStyles } from '@material-ui/styles';
-import Img from 'gatsby-image';
 
 const useStyles = makeStyles({
   homePage: {
@@ -33,21 +32,12 @@ const IndexPage = () => {
         line1
         line2
         line3
-        homepageImage {
-          fluid(maxWidth: 300) {
-            src
-          }
-        }
       }
     }
   `);
   return (
     <>
       <div className={classes.homePage}>
-        <Img
-          className={classes.image}
-          fluid={data.contentfulHomePage.homepageImage.fluid}
-        />
         <div className={classes.greetingContainer}>
           <h1>{data.contentfulHomePage.line1}</h1>
           <h1>{data.contentfulHomePage.line2}</h1>
