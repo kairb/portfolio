@@ -26,7 +26,7 @@ const useStyles = makeStyles({
   },
 });
 
-const MobileNav = () => {
+const MobileNav = ({person}) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const menuInteraction = () => {
@@ -37,7 +37,7 @@ const MobileNav = () => {
       <header className={classes.mobile}>
         <MenuIcon onClick={menuInteraction} />
       </header>
-      {open && <MobilePopup setOpen={setOpen} />}
+      {open && <MobilePopup person={person} setOpen={setOpen} />}
     </>
   );
 };

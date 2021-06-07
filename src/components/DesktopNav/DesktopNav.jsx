@@ -16,12 +16,12 @@ const useStyles = makeStyles({
   },
 });
 
-const DesktopNav = () => {
+const DesktopNav = ({person}) => {
   const classes = useStyles();
 
   return (
     <div className={classes.desktopNav}>
-      <NavigationContent />
+      <NavigationContent person={person} />
     </div>
   );
 };

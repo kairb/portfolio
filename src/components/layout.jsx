@@ -66,9 +66,9 @@ const Layout = ({ children, person }) => {
   const classes = useStyles();
   return (
     <div className={classes.app}>
-      {!isMobile && <DesktopNav />}
+      {!isMobile && <DesktopNav person={person} />}
       <main className={classes.main}>
-        {isMobile && <MobileNav />}
+        {isMobile && <MobileNav person={person} />}
 
         {children}
         <footer className={classes.footer}>

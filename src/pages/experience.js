@@ -19,7 +19,7 @@ const Experience = ({ data }) => {
     <>
       <div className={classes.root}>
         {data.map(exp => (
-          <div className={classes.project}>
+          <div key={exp.fields.company} className={classes.project}>
             <Project project={exp.fields} />
           </div>
         ))}

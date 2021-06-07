@@ -9,7 +9,6 @@ import { getContentByID } from '../utils/contentfulAPI';
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
-  console.log(pageProps.person)
   React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');

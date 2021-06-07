@@ -92,7 +92,10 @@ const Project = ({ project }) => {
     <div className={classes.root}>
       {companyLogo && (
         <div className={classes.companyLogo}>
-          <img src={companyLogo.fields.file.url} alt={`${companyLogo.fields.description} logo`} />
+          <img
+            src={companyLogo.fields.file.url}
+            alt={`${companyLogo.fields.description} logo`}
+          />
         </div>
       )}
 
@@ -107,6 +110,7 @@ const Project = ({ project }) => {
             {technologies.map(logo => (
               <img
                 className={classes.techLogo}
+                key={logo.fields.logo.fields.description}
                 src={logo.fields.logo.fields.file.url}
                 alt={`${logo.fields.logo.fields.description} logo`}
               ></img>

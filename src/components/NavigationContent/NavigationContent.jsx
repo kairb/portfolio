@@ -4,9 +4,11 @@ import links from '../../links.json';
 import Link from 'next/link';
 
 const useStyles = makeStyles({
-  desktop: {
+  root: {
+    height: '100%',
     display: 'flex',
     flexDirection: 'column',
+    justifyContent: 'space-between',
     '& h1': {
       fontWeight: '400',
       color: 'grey',
@@ -28,45 +30,37 @@ const useStyles = makeStyles({
     width: '100px',
     borderRadius: '50%',
   },
+  link: {
+    cursor: 'pointer',
+    '&:hover': {
+    },
+  },
 });
 
-const DesktopNav = () => {
-  // const data = useStaticQuery(graphql`
-  //   query navQuery {
-  //     contentfulPerson {
-  //       id
-  //       name
-  //       jobTitle
-  //       image {
-  //         fluid(maxWidth: 300) {
-  //           base64
-  //           tracedSVG
-  //           srcWebp
-  //           srcSetWebp
-  //           src
-  //           srcSet
-  //           aspectRatio
-  //           sizes
-  //         }
-  //       }
-  //     }
-  //   }
-  // `);
+const NavigationContent = ({ person }) => {
   const classes = useStyles();
-  // const { name, jobTitle } = data.contentfulPerson;
+  const {
+    name,
+    jobTitle,
+    image: {
+      fields: {
+        file: { url },
+      },
+    },
+  } = person;
   return (
-    <header className={classes.desktop}>
+    <header className={classes.root}>
       <div className={classes.profile}>
         <div>
-          {/* <Img className={classes.profileImage} fluid={fluid} /> */}
+          <img className={classes.profileImage} src={url} />
         </div>
-        {/* <h2>{name}</h2>
-        <h3>{jobTitle}</h3> */}
+        <h2>{name}</h2>
+        <h3>{jobTitle}</h3>
       </div>
       <div>
-        {links.links.map(link => (
-          <Link href={`${link.slug}`} >
-            <h1>{link.name}</h1>
+        {links.links.map(({ name, slug }) => (
+          <Link className={classes.link} key={name} href={slug}>
+            <h1>{name}</h1>
           </Link>
         ))}
       </div>
@@ -74,4 +68,4 @@ const DesktopNav = () => {
   );
 };
 
-export default DesktopNav;
+export default NavigationContent;
