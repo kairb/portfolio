@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-// import links from '../../links.json';
 import Link from 'next/link';
 import { LinkedIn, GitHub } from '@material-ui/icons';
 
@@ -65,7 +64,7 @@ const NavigationContent = ({ person, close, links }) => {
       },
     },
   } = person;
-  
+
   const {links:{links: linkArray}} = links;
   
   return (
@@ -78,7 +77,7 @@ const NavigationContent = ({ person, close, links }) => {
         <h3>{jobTitle}</h3>
         <div className={classes.socialLinks}>
           <a href="https://github.com/kairb">
-            <GitHub fontSize="medium" />
+            <GitHub fontSize="default" />
           </a>
           <a href="https://www.linkedin.com/in/kai-roper-blackman/">
             <LinkedIn fontSize="large" />
