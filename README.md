@@ -8,4 +8,4 @@ Welcome to my portfolio! This site shows a brief overview of my experience and a
 - MUI (Styling)
 - Contentful (content)
 - Email JS (contact form)
-- Netlify (CI/CD)
+- Vercel (CI/CD)
