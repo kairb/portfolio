@@ -61,17 +61,9 @@ const useStyles = makeStyles({
   },
 });
 
-const Layout = ({ children }) => {
+const Layout = ({ children, person }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const classes = useStyles();
-  // const data = useStaticQuery(graphql`
-  //   query MyQuery {
-  //     contentfulPerson {
-  //       name
-  //     }
-  //   }
-  // `);
-
   return (
     <div className={classes.app}>
       {!isMobile && <DesktopNav />}
@@ -80,7 +72,7 @@ const Layout = ({ children }) => {
 
         {children}
         <footer className={classes.footer}>
-          {/* {`${data.contentfulPerson.name} ${new Date().getFullYear()}`} */}
+          {`${person.name} ${new Date().getFullYear()}`}
         </footer>
       </main>
     </div>
