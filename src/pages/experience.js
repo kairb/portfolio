@@ -1,7 +1,7 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import Project from '../components/Project';
 import { makeStyles } from '@material-ui/styles';
+import { getAllContentByID } from '../utils/contentfulAPI';
 
 const useStyles = makeStyles({
   root: {
@@ -13,51 +13,28 @@ const useStyles = makeStyles({
   },
 });
 
-const Experience = () => {
+const Experience = ({ data }) => {
   const classes = useStyles();
-  const data = useStaticQuery(graphql`
-    query {
-      allContentfulExperience {
-        nodes {
-          company
-          description {
-            description
-          }
-          companyWebsite
-          companyLogo {
-            file {
-              url
-            }
-          }
-          technologies {
-            technology
-            logo {
-              description
-              id
-              file {
-                url
-              }
-            }
-          }
-          from
-          to
-          role
-        }
-      }
-    }
-  `);
-
   return (
     <>
       <div className={classes.root}>
-        {data.allContentfulExperience.nodes.map(exp => (
+        {data.map(exp => (
           <div className={classes.project}>
-            <Project project={exp} />
+            <Project project={exp.fields} />
           </div>
         ))}
       </div>
     </>
   );
 };
+
+export async function getStaticProps() {
+  const data = await getAllContentByID('project');
+  return {
+    props: {
+      data: data.items,
+    },
+  };
+}
 
 export default Experience;

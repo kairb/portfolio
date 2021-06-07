@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+// import { useStaticQuery, graphql } from 'gatsby';
 import { makeStyles } from '@material-ui/core/styles';
 import MobileNav from './MobileNav/MobileNav';
 import theme from '../theme';
@@ -64,13 +64,13 @@ const useStyles = makeStyles({
 const Layout = ({ children }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const classes = useStyles();
-  const data = useStaticQuery(graphql`
-    query MyQuery {
-      contentfulPerson {
-        name
-      }
-    }
-  `);
+  // const data = useStaticQuery(graphql`
+  //   query MyQuery {
+  //     contentfulPerson {
+  //       name
+  //     }
+  //   }
+  // `);
 
   return (
     <div className={classes.app}>
@@ -80,7 +80,7 @@ const Layout = ({ children }) => {
 
         {children}
         <footer className={classes.footer}>
-          {`${data.contentfulPerson.name} ${new Date().getFullYear()}`}
+          {/* {`${data.contentfulPerson.name} ${new Date().getFullYear()}`} */}
         </footer>
       </main>
     </div>

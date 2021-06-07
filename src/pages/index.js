@@ -1,6 +1,6 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import { makeStyles } from '@material-ui/styles';
+import { getContentByID } from '../utils/contentfulAPI';
 
 const useStyles = makeStyles({
   homePage: {
@@ -24,28 +24,29 @@ const useStyles = makeStyles({
   },
 });
 
-const IndexPage = () => {
+const index = ({ data }) => {
+  const { line1, line2, line3 } = data;
   const classes = useStyles();
-  const data = useStaticQuery(graphql`
-    query homePageQuery {
-      contentfulHomePage {
-        line1
-        line2
-        line3
-      }
-    }
-  `);
   return (
     <>
       <div className={classes.homePage}>
         <div className={classes.greetingContainer}>
-          <h1>{data.contentfulHomePage.line1}</h1>
-          <h1>{data.contentfulHomePage.line2}</h1>
-          <h1>{data.contentfulHomePage.line3}</h1>
+          <h1>{line1}</h1> 
+          <h1>{line2}</h1>
+          <h1>{line3}</h1>
         </div>
       </div>
     </>
   );
 };
 
-export default IndexPage;
+export async function getStaticProps() {
+  const data = await getContentByID('3u6jVa5LdNzKhE4sbGjk6Y');
+  return {
+    props: {
+      data: data.fields,
+    },
+  };
+}
+
+export default index;

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-// import { makeStyles } from '@material-ui/core/styles';
 import ContactForm from '../components/ContactForm/ContactForm';
 
-const SecondPage = () => {
+const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
   return (
     <>
@@ -21,5 +20,11 @@ const SecondPage = () => {
     </>
   );
 };
+export async function getStaticProps() {
+  return {
+    props: {
+    },
+  };
+}
 
-export default SecondPage;
+export default Contact;

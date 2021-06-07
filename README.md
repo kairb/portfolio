@@ -4,7 +4,7 @@ Welcome to my portfolio! This site shows a brief overview of my experience and a
 ## Architecture
 
 - React
-- Gatsby (SSR)
+- Next.js (SSR/CSR/ISR)
 - MUI (Styling)
 - Contentful (content)
 - Email JS (contact form)

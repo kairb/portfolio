@@ -1,8 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'gatsby';
 import links from '../../links.json';
-import { useStaticQuery, graphql } from 'gatsby';
+import Link from 'next/link';
 
 const useStyles = makeStyles({
   desktop: {
@@ -20,9 +19,6 @@ const useStyles = makeStyles({
       color: 'black',
     },
   },
-  activeLink: {
-    color: 'black',
-  },
   profile: {
     display: 'flex',
     flexDirection: 'column',
@@ -35,45 +31,41 @@ const useStyles = makeStyles({
 });
 
 const DesktopNav = () => {
-  const data = useStaticQuery(graphql`
-    query navQuery {
-      contentfulPerson {
-        id
-        name
-        jobTitle
-        image {
-          fluid(maxWidth: 300) {
-            base64
-            tracedSVG
-            srcWebp
-            srcSetWebp
-            src
-            srcSet
-            aspectRatio
-            sizes
-          }
-        }
-      }
-    }
-  `);
+  // const data = useStaticQuery(graphql`
+  //   query navQuery {
+  //     contentfulPerson {
+  //       id
+  //       name
+  //       jobTitle
+  //       image {
+  //         fluid(maxWidth: 300) {
+  //           base64
+  //           tracedSVG
+  //           srcWebp
+  //           srcSetWebp
+  //           src
+  //           srcSet
+  //           aspectRatio
+  //           sizes
+  //         }
+  //       }
+  //     }
+  //   }
+  // `);
   const classes = useStyles();
-  const {
-    name,
-    jobTitle,
-    image: { fluid },
-  } = data.contentfulPerson;
+  // const { name, jobTitle } = data.contentfulPerson;
   return (
     <header className={classes.desktop}>
       <div className={classes.profile}>
         <div>
           {/* <Img className={classes.profileImage} fluid={fluid} /> */}
         </div>
-        <h2>{name}</h2>
-        <h3>{jobTitle}</h3>
+        {/* <h2>{name}</h2>
+        <h3>{jobTitle}</h3> */}
       </div>
       <div>
         {links.links.map(link => (
-          <Link to={`${link.slug}`} className={classes.activeLink}>
+          <Link href={`${link.slug}`} >
             <h1>{link.name}</h1>
           </Link>
         ))}

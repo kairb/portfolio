@@ -57,14 +57,14 @@ const ContactForm = ({ setSubmitted }) => {
       setIsSubmitting(true);
       emailjs
         .send(
-          process.env.GATSBY_SERVICE_ID,
+          process.env.NEXT_PUBLIC_SERVICE_ID,
           'template_dg04yxb',
           {
             name: data.name,
             email: data.email,
             message: data.message,
           },
-          process.env.GATSBY_USER_ID
+          process.env.NEXT_PUBLIC_USER_ID
         )
         .then(
           response => {
@@ -112,7 +112,7 @@ const ContactForm = ({ setSubmitted }) => {
       />
 
       <ReCAPTCHA
-        sitekey={process.env.GATSBY_GOOGLE_SITE_KEY}
+        sitekey={process.env.NEXT_PUBLIC_GOOGLE_SITE_KEY}
         onChange={recapInteraction}
       />
       {recapError && <p>Are you a robot?</p>}
