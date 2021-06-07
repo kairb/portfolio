@@ -60,14 +60,14 @@ const useStyles = makeStyles({
   },
 });
 
-const Layout = ({ children, person }) => {
+const Layout = ({ children, person, links }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const classes = useStyles();
   return (
     <div className={classes.app}>
-      {!isMobile && <DesktopNav person={person} />}
+      {!isMobile && <DesktopNav person={person} links={links} />}
       <main className={classes.main}>
-        {isMobile && <MobileNav person={person} />}
+        {isMobile && <MobileNav person={person} links={links} />}
 
         {children}
         <footer className={classes.footer}>

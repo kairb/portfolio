@@ -14,12 +14,12 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const DesktopNav = ({ person }) => {
+const DesktopNav = ({ person, links }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.desktopNav}>
-      <NavigationContent person={person} close={() => {}} />
+      <NavigationContent person={person} close={() => {}} links={links}/>
     </div>
   );
 };

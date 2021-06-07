@@ -46,7 +46,7 @@ const useStyles = makeStyles({
   techLogo: {
     width: '50px',
     height: '50px',
-    marginRight: '5px',
+    margin: '5px',
   },
   companyLogo: {
     display: 'flex',

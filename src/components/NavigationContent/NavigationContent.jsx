@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import links from '../../links.json';
+// import links from '../../links.json';
 import Link from 'next/link';
 import { LinkedIn, GitHub } from '@material-ui/icons';
 
@@ -54,7 +54,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const NavigationContent = ({ person, close }) => {
+const NavigationContent = ({ person, close, links }) => {
   const classes = useStyles();
   const {
     name,
@@ -65,6 +65,9 @@ const NavigationContent = ({ person, close }) => {
       },
     },
   } = person;
+  
+  const {links:{links: linkArray}} = links;
+  
   return (
     <header className={classes.root}>
       <div className={classes.profile}>
@@ -83,7 +86,7 @@ const NavigationContent = ({ person, close }) => {
         </div>
       </div>
       <div className={classes.links}>
-        {links.links.map(({ name, slug }) => (
+        {linkArray.map(({ name, slug }) => (
           <Link key={name} href={slug}>
             <h1 className={classes.link} onClick={() => close(false)}>
               {name}

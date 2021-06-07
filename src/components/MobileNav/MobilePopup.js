@@ -22,7 +22,7 @@ const useStyles = makeStyles({
   },
 });
 
-const MobilePopup = ({ setOpen, person }) => {
+const MobilePopup = ({ setOpen, person, links }) => {
   const classes = useStyles();
   const close = () => setOpen(false);
   return (
@@ -30,7 +30,7 @@ const MobilePopup = ({ setOpen, person }) => {
       <div className={classes.close}>
         <CloseIcon onClick={close} />
       </div>
-      <NavigationContent person={person} close={close} />
+      <NavigationContent person={person} close={close} links={links} />
     </div>
   );
 };

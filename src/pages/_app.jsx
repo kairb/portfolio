@@ -28,7 +28,7 @@ export default function MyApp(props) {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Layout person={pageProps.person}>
+        <Layout person={pageProps.person} links={pageProps.links}>
           <Component {...pageProps} />
         </Layout>
       </ThemeProvider>
@@ -38,8 +38,9 @@ export default function MyApp(props) {
 
 MyApp.getInitialProps = async appContext => {
   const appProps = await App.getInitialProps(appContext);
-  const data = await getContentByID('2phncHTZHxYNFSLwpjZUuw');
-  appProps.pageProps = { person: data.fields };
+  const person = await getContentByID('2phncHTZHxYNFSLwpjZUuw');
+  const links = await getContentByID('2P0Az02pprXb2hY8e55stP');
+  appProps.pageProps = { person: person.fields, links: links.fields };
   return {
     ...appProps,
   };
