@@ -11,7 +11,7 @@ const Contact = () => {
         <>
           <h1>Contact</h1>
           <h2>
-            Doing something cool? feel free to drop me a message and I'll get
+            Doing something cool? Feel free to drop me a message and I'll get
             back to you as soon as possible
           </h2>
           <ContactForm setSubmitted={setSubmitted} />
