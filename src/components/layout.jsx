@@ -49,9 +49,8 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     justifyContent: 'space-between',
     minHeight: '100vh',
-    padding: '20px',
     [theme.breakpoints.up('md')]: {
-      marginLeft: '25vw',
+      marginLeft: '320px',
     },
   },
   footer: {
@@ -78,6 +77,5 @@ const Layout = ({ children, person }) => {
     </div>
   );
 };
-
 
 export default Layout;
