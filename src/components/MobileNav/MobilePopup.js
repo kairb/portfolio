@@ -30,7 +30,7 @@ const MobilePopup = ({ setOpen, person }) => {
       <div className={classes.close}>
         <CloseIcon onClick={close} />
       </div>
-      <NavigationContent person={person} />
+      <NavigationContent person={person} close={close} />
     </div>
   );
 };

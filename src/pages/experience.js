@@ -5,8 +5,7 @@ import { getAllContentByID } from '../utils/contentfulAPI';
 
 const useStyles = makeStyles({
   root: {
-    // width: "100%",
-    // height: "100%",
+    padding: '20px',
   },
   project: {
     marginBottom: '20px',
@@ -16,15 +15,13 @@ const useStyles = makeStyles({
 const Experience = ({ data }) => {
   const classes = useStyles();
   return (
-    <>
-      <div className={classes.root}>
-        {data.map(exp => (
-          <div key={exp.fields.company} className={classes.project}>
-            <Project project={exp.fields} />
-          </div>
-        ))}
-      </div>
-    </>
+    <div className={classes.root}>
+      {data.map(exp => (
+        <div key={exp.fields.company} className={classes.project}>
+          <Project project={exp.fields} />
+        </div>
+      ))}
+    </div>
   );
 };
 

@@ -2,23 +2,24 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import links from '../../links.json';
 import Link from 'next/link';
+import { LinkedIn, GitHub } from '@material-ui/icons';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     '& h1': {
       fontWeight: '400',
       color: 'grey',
       marginBottom: '5px',
+      '&:hover': {
+        color: 'black',
+      },
     },
-    '& a': {
-      textDecoration: 'none',
-    },
-    '& h1:hover': {
-      color: 'black',
+    [theme.breakpoints.up('md')]: {
+      justifyContent: 'space-between',
     },
   },
   profile: {
@@ -30,14 +31,30 @@ const useStyles = makeStyles({
     width: '100px',
     borderRadius: '50%',
   },
-  link: {
-    cursor: 'pointer',
-    '&:hover': {
+  socialLinks: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    '& a': {
+      padding: '5px',
+      color: 'black',
     },
   },
-});
+  links: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    marginTop: '40px',
+    [theme.breakpoints.up('md')]: {
+      alignItems: 'flex-start',
+    },
+  },
+  link: {
+    '&:hover': { cursor: 'pointer' },
+  },
+}));
 
-const NavigationContent = ({ person }) => {
+const NavigationContent = ({ person, close }) => {
   const classes = useStyles();
   const {
     name,
@@ -56,11 +73,21 @@ const NavigationContent = ({ person }) => {
         </div>
         <h2>{name}</h2>
         <h3>{jobTitle}</h3>
+        <div className={classes.socialLinks}>
+          <a href="https://github.com/kairb">
+            <GitHub fontSize="medium" />
+          </a>
+          <a href="https://www.linkedin.com/in/kai-roper-blackman/">
+            <LinkedIn fontSize="large" />
+          </a>
+        </div>
       </div>
-      <div>
+      <div className={classes.links}>
         {links.links.map(({ name, slug }) => (
-          <Link className={classes.link} key={name} href={slug}>
-            <h1>{name}</h1>
+          <Link key={name} href={slug}>
+            <h1 className={classes.link} onClick={() => close(false)}>
+              {name}
+            </h1>
           </Link>
         ))}
       </div>

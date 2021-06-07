@@ -4,7 +4,7 @@ import ContactForm from '../components/ContactForm/ContactForm';
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
   return (
-    <>
+    <div style={{ padding: '20px' }}>
       {submitted ? (
         <h1>Thank you! I'll be in touch shortly</h1>
       ) : (
@@ -17,13 +17,12 @@ const Contact = () => {
           <ContactForm setSubmitted={setSubmitted} />
         </>
       )}
-    </>
+    </div>
   );
 };
 export async function getStaticProps() {
   return {
-    props: {
-    },
+    props: {},
   };
 }
 
