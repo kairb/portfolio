@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Link from 'next/link';
 import { LinkedIn, GitHub } from '@material-ui/icons';
+import Image from 'next/image';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -60,18 +61,29 @@ const NavigationContent = ({ person, close, links }) => {
     jobTitle,
     image: {
       fields: {
-        file: { url },
+        file: {
+          url,
+          details: { image },
+        },
       },
     },
   } = person;
 
-  const {links:{links: linkArray}} = links;
-  
+  const {
+    links: { links: linkArray },
+  } = links;
+  const imageWidth = 300;
+  const imageHeight = image.height / (image.width / imageWidth);
   return (
     <header className={classes.root}>
       <div className={classes.profile}>
         <div>
-          <img className={classes.profileImage} src={url} />
+          <Image
+            className={classes.profileImage}
+            src={`https:${url}`}
+            width={imageWidth}
+            height={imageHeight}
+          />
         </div>
         <h2>{name}</h2>
         <h3>{jobTitle}</h3>
