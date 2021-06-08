@@ -28,7 +28,6 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
   },
   profileImage: {
-    width: '100px',
     borderRadius: '50%',
   },
   socialLinks: {
