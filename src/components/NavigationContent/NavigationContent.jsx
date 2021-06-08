@@ -72,7 +72,7 @@ const NavigationContent = ({ person, close, links }) => {
   const {
     links: { links: linkArray },
   } = links;
-  const imageWidth = 300;
+  const imageWidth = 150;
   const imageHeight = image.height / (image.width / imageWidth);
   return (
     <header className={classes.root}>
