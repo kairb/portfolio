@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useForm } from 'react-hook-form';
 import theme from '../../theme';
@@ -39,14 +39,21 @@ const useStyles = makeStyles({
 
   button: {
     height: '74px',
-    width: '304px',
+    width: '100%',
     backgroundColor: theme.palette.buttonColor,
     borderRadius: '8px',
+    [theme.breakpoints.up('md')]: {
+      width: '304px',
+    },
   },
   authorise: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+    flexDirection: 'column',
+    [theme.breakpoints.up('md')]: {
+      flexDirection: 'row',
+    },
   },
 });
 
@@ -58,15 +65,12 @@ const ContactForm = ({ setSubmitted }) => {
   } = useForm();
   const classes = useStyles();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [recapChecked, setRecapChecked] = useState(false);
-  const [recapError, setRecapError] = useState(false);
+  const [error, setError] = useState(false);
+  const recaptchaRef = useRef();
 
-  function recapInteraction(value) {
-    setRecapChecked(value);
-    setRecapError(!value);
-  }
-  const handleSubmit = data => {
-    if (recapChecked) {
+  const handleSubmit = async data => {
+    try {
+      const token = await recaptchaRef.current.executeAsync();
       setIsSubmitting(true);
       emailjs
         .send(
@@ -76,21 +80,16 @@ const ContactForm = ({ setSubmitted }) => {
             name: data.name,
             email: data.email,
             message: data.message,
+            'g-recaptcha-response': token,
           },
           process.env.NEXT_PUBLIC_USER_ID
         )
-        .then(
-          response => {
-            setIsSubmitting(false);
-            setSubmitted(true);
-          },
-          err => {
-            alert('Oops- something went wrong. Please try again');
-            setIsSubmitting(false);
-          }
-        );
-    } else {
-      setRecapError(true);
+        .then(response => {
+          setSubmitted(true);
+        });
+    } catch (_err) {
+      setError(true);
+      setIsSubmitting(false);
     }
   };
 
@@ -125,10 +124,10 @@ const ContactForm = ({ setSubmitted }) => {
       />
       <div className={classes.authorise}>
         <ReCAPTCHA
+          ref={recaptchaRef}
+          size="invisible"
           sitekey={process.env.NEXT_PUBLIC_GOOGLE_SITE_KEY}
-          onChange={recapInteraction}
         />
-        {recapError && <p>Are you a robot?</p>}
         <button
           type="submit"
           className={classes.button}
@@ -137,6 +136,7 @@ const ContactForm = ({ setSubmitted }) => {
           {isSubmitting ? <CircularProgress /> : 'Submit'}
         </button>
       </div>
+      {error && <p>Something went wrong, please try again</p>}
     </form>
   );
 };
