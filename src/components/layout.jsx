@@ -1,5 +1,4 @@
 import React from 'react';
-// import { useStaticQuery, graphql } from 'gatsby';
 import { makeStyles } from '@material-ui/core/styles';
 import MobileNav from './MobileNav/MobileNav';
 import theme from '../theme';
@@ -48,15 +47,10 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    minHeight: '100vh',
+    height: '100vh',
     [theme.breakpoints.up('md')]: {
       marginLeft: '320px',
     },
-  },
-  footer: {
-    display: 'flex',
-    justifyContent: 'center',
-    justifySelf: 'flex-end',
   },
 });
 
@@ -68,11 +62,7 @@ const Layout = ({ children, person, links }) => {
       {!isMobile && <DesktopNav person={person} links={links} />}
       <main className={classes.main}>
         {isMobile && <MobileNav person={person} links={links} />}
-
         {children}
-        <footer className={classes.footer}>
-          {`${person.name} ${new Date().getFullYear()}`}
-        </footer>
       </main>
     </div>
   );

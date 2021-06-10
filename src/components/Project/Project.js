@@ -46,7 +46,7 @@ const useStyles = makeStyles({
   techLogo: {
     width: '50px',
     height: '50px',
-    margin: '5px',
+    marginRight: '10px',
   },
   companyLogo: {
     display: 'flex',
@@ -79,15 +79,8 @@ const convertDate = iso => {
 
 const Project = ({ project }) => {
   const classes = useStyles();
-  const {
-    company,
-    role,
-    from,
-    to,
-    description,
-    technologies,
-    companyLogo,
-  } = project;
+  const { company, role, from, to, description, technologies, companyLogo } =
+    project;
   return (
     <div className={classes.root}>
       {companyLogo && (

@@ -1,8 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import theme from '../../theme';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -11,12 +10,13 @@ const useStyles = makeStyles({
   },
   textInput: {
     height: '40px',
-    margin: '10px 0px',
-    borderRadius: '5px',
   },
   textarea: {
     width: '100%',
     resize: 'none',
+  },
+  label: {
+    margin: '10px 0px', // not working
   },
   errorHighlight: {
     borderColor: theme.palette.formValidationError,
@@ -24,14 +24,14 @@ const useStyles = makeStyles({
   red: {
     color: 'red',
   },
-});
+}));
 
 const Input = ({ type, register, placeholder, label, error, errorMessage }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <p className={`${error ? classes.red : ''}`}>{label}</p>
+      <p className={`${classes.label} ${error ? classes.red : ''} `}>{label}</p>
       {type === 'text' && (
         <input
           className={`${classes.textInput} ${
@@ -48,7 +48,7 @@ const Input = ({ type, register, placeholder, label, error, errorMessage }) => {
             error ? classes.errorHighlight : ''
           }`}
           {...register}
-          rows="7"
+          rows="5"
         ></textarea>
       )}
       {error && <label className={classes.red}>{errorMessage}</label>}

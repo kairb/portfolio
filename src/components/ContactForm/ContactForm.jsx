@@ -9,9 +9,17 @@ import ReCAPTCHA from 'react-google-recaptcha';
 
 const useStyles = makeStyles({
   form: {
+    background: 'white',
+    width: '100%',
+    padding: '20px',
     display: 'flex',
     flexDirection: 'column',
     margin: '30px 0px',
+    borderRadius: '10px',
+    boxShadow: '0 0 8px #7f7f7f',
+    '&rc-anchor-container': {
+      width: '300px',
+    },
   },
   row: {
     width: '100%',
@@ -30,10 +38,15 @@ const useStyles = makeStyles({
   },
 
   button: {
-    height: '60px',
-    margin: '20px 50px',
+    height: '74px',
+    width: '304px',
     backgroundColor: theme.palette.buttonColor,
     borderRadius: '8px',
+  },
+  authorise: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 });
 
@@ -110,15 +123,20 @@ const ContactForm = ({ setSubmitted }) => {
         error={errors.message}
         errorMessage="Please enter a message"
       />
-
-      <ReCAPTCHA
-        sitekey={process.env.NEXT_PUBLIC_GOOGLE_SITE_KEY}
-        onChange={recapInteraction}
-      />
-      {recapError && <p>Are you a robot?</p>}
-      <button type="submit" className={classes.button} disabled={isSubmitting}>
-        {isSubmitting ? <CircularProgress /> : 'Submit'}
-      </button>
+      <div className={classes.authorise}>
+        <ReCAPTCHA
+          sitekey={process.env.NEXT_PUBLIC_GOOGLE_SITE_KEY}
+          onChange={recapInteraction}
+        />
+        {recapError && <p>Are you a robot?</p>}
+        <button
+          type="submit"
+          className={classes.button}
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? <CircularProgress /> : 'Submit'}
+        </button>
+      </div>
     </form>
   );
 };
