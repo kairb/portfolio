@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     alignItems: 'center',
     padding: '20px',
-    height: '98vh',
+    height: '100vh',
     background: `linear-gradient(345deg, ${theme.palette.blue} 50%, ${theme.palette.background} 50%)`,
   },
   contact: {

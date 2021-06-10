@@ -6,6 +6,9 @@ import { getAllContentByID } from '../utils/contentfulAPI';
 const useStyles = makeStyles({
   root: {
     padding: '20px',
+    '& :last-child': {
+      marginBottom: '0px',
+    },
   },
   project: {
     marginBottom: '20px',
