@@ -11,16 +11,24 @@ const useStyles = makeStyles(theme => ({
     padding: '20px',
     height: '100vh',
     background: `linear-gradient(345deg, ${theme.palette.blue} 50%, ${theme.palette.background} 50%)`,
+    textAlign: 'center',
   },
   contact: {
-    width: '70%',
+    width: '90%',
+    [theme.breakpoints.up('md')]: {
+      width: '70%',
+    },
+  },
+  submitted: {
+    justifyContent: 'flex-start',
+    paddingTop: '100px',
   },
 }));
 const Contact = () => {
   const classes = useStyles();
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState(true);
   return (
-    <div className={classes.root}>
+    <div className={`${classes.root} ${submitted ? classes.submitted : ''}`}>
       {submitted ? (
         <h1>Thank you! I'll be in touch shortly</h1>
       ) : (

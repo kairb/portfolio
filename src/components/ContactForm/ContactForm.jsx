@@ -9,11 +9,13 @@ import ReCAPTCHA from 'react-google-recaptcha';
 
 const useStyles = makeStyles({
   form: {
+    textAlign: 'left',
     background: 'white',
     width: '100%',
     padding: '20px',
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
     margin: '30px 0px',
     borderRadius: '10px',
     boxShadow: '0 0 8px #7f7f7f',
@@ -44,15 +46,7 @@ const useStyles = makeStyles({
     borderRadius: '8px',
     [theme.breakpoints.up('md')]: {
       width: '304px',
-    },
-  },
-  authorise: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    flexDirection: 'column',
-    [theme.breakpoints.up('md')]: {
-      flexDirection: 'row',
+      width: '50%',
     },
   },
 });
@@ -122,20 +116,16 @@ const ContactForm = ({ setSubmitted }) => {
         error={errors.message}
         errorMessage="Please enter a message"
       />
-      <div className={classes.authorise}>
-        <ReCAPTCHA
-          ref={recaptchaRef}
-          size="invisible"
-          sitekey={process.env.NEXT_PUBLIC_GOOGLE_SITE_KEY}
-        />
-        <button
-          type="submit"
-          className={classes.button}
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? <CircularProgress /> : 'Submit'}
-        </button>
-      </div>
+
+      <button type="submit" className={classes.button} disabled={isSubmitting}>
+        {isSubmitting ? <CircularProgress /> : 'Submit'}
+      </button>
+
+      <ReCAPTCHA
+        ref={recaptchaRef}
+        size="invisible"
+        sitekey={process.env.NEXT_PUBLIC_GOOGLE_SITE_KEY}
+      />
       {error && <p>Something went wrong, please try again</p>}
     </form>
   );
