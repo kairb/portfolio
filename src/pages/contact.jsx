@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
 }));
 const Contact = () => {
   const classes = useStyles();
-  const [submitted, setSubmitted] = useState(true);
+  const [submitted, setSubmitted] = useState(false);
   return (
     <div className={`${classes.root} ${submitted ? classes.submitted : ''}`}>
       {submitted ? (
