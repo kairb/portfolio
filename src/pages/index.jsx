@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   },
 });
 
-const index = ({ data }) => {
+const Index = ({ data }) => {
   const { line1, line2, line3 } = data;
   const classes = useStyles();
   return (
@@ -49,4 +49,4 @@ export async function getStaticProps() {
   };
 }
 
-export default index;
+export default Index;
