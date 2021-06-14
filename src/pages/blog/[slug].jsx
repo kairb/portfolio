@@ -12,9 +12,6 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'flex-start',
     flexDirection: 'column',
     padding: '20px',
-    '& hr': {
-      width: '100%',
-    },
   },
   header: {
     borderBottom: '1px solid grey',
@@ -66,7 +63,6 @@ const BlogPost = ({ data }) => {
           monthNames[date.getMonth()]
         } ${date.getFullYear()}`}</h3>
       </div>
-      {/* <hr /> */}
       <div
         className={classes.content}
         dangerouslySetInnerHTML={{ __html: marked(content) }}
