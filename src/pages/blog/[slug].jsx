@@ -8,10 +8,13 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'flex-start',
     flexDirection: 'column',
     padding: '20px',
+  },
+  content: {
+    marginTop: '20px',
     '& pre': {
       borderRadius: '10px',
       padding: '10px',
-      backgroundColor: 'black',
+      backgroundColor: theme.palette.codeBackgroundColor,
       color: 'white',
     },
   },
@@ -44,7 +47,10 @@ const BlogPost = ({ data }) => {
       <h3>{`By Kai Roper-Blackman, ${
         monthNames[date.getMonth()]
       } ${date.getFullYear()}`}</h3>
-      <div dangerouslySetInnerHTML={{ __html: marked(content) }} />
+      <div
+        className={classes.content}
+        dangerouslySetInnerHTML={{ __html: marked(content) }}
+      />
     </div>
   );
 };
