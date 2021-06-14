@@ -12,6 +12,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'flex-start',
     flexDirection: 'column',
+    textAlign: 'center',
     padding: '20px',
     '& pre': {
       borderRadius: '10px',
