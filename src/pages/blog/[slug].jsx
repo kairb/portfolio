@@ -2,7 +2,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { getAllContentByID, getContentByID } from '../../utils/contentfulAPI';
 import marked from 'marked';
 import hljs from 'highlight.js';
-import 'highlight.js/styles/androidstudio.css';
+import 'highlight.js/styles/a11y-dark.css';
+import { useEffect } from 'react';
 
 const fs = require('fs');
 const useStyles = makeStyles(theme => ({
@@ -11,6 +12,9 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'flex-start',
     flexDirection: 'column',
     padding: '20px',
+    '& hr': {
+      width: '100%',
+    },
   },
   content: {
     marginTop: '20px',
@@ -43,19 +47,18 @@ const BlogPost = ({ data }) => {
     'November',
     'December',
   ];
-  marked.setOptions({
-    langPrefix: 'hljs language-',
-    highlight: function (code) {
-      return hljs.highlightAuto(code, ['javascript']).value;
-    },
-  });
+  useEffect(() => {
+    hljs.configure({ languages: ['javascript'] });
+    hljs.highlightAll();
+  }, []);
   return (
     <div className={classes.root}>
       <h1>{title}</h1>
       <h2>{shortDescription}</h2>
-      <h3>{`By Kai Roper-Blackman, ${
+      <h3>{`Kai Roper-Blackman, ${
         monthNames[date.getMonth()]
       } ${date.getFullYear()}`}</h3>
+      <hr />
       <div
         className={classes.content}
         dangerouslySetInnerHTML={{ __html: marked(content) }}
