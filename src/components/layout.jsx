@@ -54,7 +54,6 @@ const useStyles = makeStyles({
   main: {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
     minHeight: '100vh',
     [theme.breakpoints.up('md')]: {
       marginLeft: '320px',

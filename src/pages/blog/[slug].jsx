@@ -1,9 +1,10 @@
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { getAllContentByID, getContentByID } from '../../utils/contentfulAPI';
 import marked from 'marked';
-import hljs from 'highlight.js';
-import 'highlight.js/styles/a11y-dark.css';
-import { useEffect } from 'react';
+import parse from 'html-react-parser';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
 const fs = require('fs');
 const useStyles = makeStyles(theme => ({
@@ -12,21 +13,15 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'flex-start',
     flexDirection: 'column',
     padding: '20px',
+    '& pre': {
+      borderRadius: '10px',
+    },
   },
   header: {
     borderBottom: '1px solid grey',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-  },
-  content: {
-    marginTop: '20px',
-    '& pre': {
-      borderRadius: '10px',
-      padding: '10px',
-      backgroundColor: theme.palette.codeBackgroundColor,
-      color: 'white',
-    },
   },
 }));
 const BlogPost = ({ data }) => {
@@ -50,10 +45,24 @@ const BlogPost = ({ data }) => {
     'November',
     'December',
   ];
-  useEffect(() => {
-    hljs.configure({ languages: ['javascript'] });
-    hljs.highlightAll();
-  }, []);
+  const html = parse(marked(content), {
+    replace: domNode => {
+      if (domNode.name === 'pre') {
+        const codeString = domNode.children[0].children[0].data;
+        return (
+          <SyntaxHighlighter
+            language="javascript"
+            wrapLines
+            wrapLongLines="white-space"
+            style={a11yDark}
+          >
+            {codeString}
+          </SyntaxHighlighter>
+        );
+      }
+    },
+  });
+
   return (
     <div className={classes.root}>
       <div className={classes.header}>
@@ -63,10 +72,7 @@ const BlogPost = ({ data }) => {
           monthNames[date.getMonth()]
         } ${date.getFullYear()}`}</h3>
       </div>
-      <div
-        className={classes.content}
-        dangerouslySetInnerHTML={{ __html: marked(content) }}
-      />
+      {html}
     </div>
   );
 };
