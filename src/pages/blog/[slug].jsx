@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { getAllContentByID, getContentByID } from '../../utils/contentfulAPI';
+import marked from 'marked';
 const fs = require('fs');
 const useStyles = makeStyles(theme => ({
   root: {
@@ -7,17 +8,20 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'flex-start',
     flexDirection: 'column',
     padding: '20px',
+    '& pre': {
+      borderRadius: '10px',
+      padding: '10px',
+      backgroundColor: 'black',
+      color: 'white',
+    },
   },
 }));
 const BlogPost = ({ data }) => {
   const classes = useStyles();
-
   const {
-    sys: { slug, createdAt },
-    fields: { title, shortDescription },
+    sys: { createdAt },
+    fields: { title, shortDescription, content },
   } = data;
-  // const router = useRouter();
-  // const { slug } = router.query;
   const date = new Date(createdAt);
   const monthNames = [
     'January',
@@ -40,6 +44,7 @@ const BlogPost = ({ data }) => {
       <h3>{`By Kai Roper-Blackman, ${
         monthNames[date.getMonth()]
       } ${date.getFullYear()}`}</h3>
+      <div dangerouslySetInnerHTML={{ __html: marked(content) }} />
     </div>
   );
 };

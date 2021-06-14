@@ -87,10 +87,13 @@ const NavigationContent = ({ person, close, links }) => {
         <h2>{name}</h2>
         <h3>{jobTitle}</h3>
         <div className={classes.socialLinks}>
-          <a href="https://github.com/kairb">
+          <a href="https://github.com/kairb" target="_blank">
             <GitHub fontSize="default" />
           </a>
-          <a href="https://www.linkedin.com/in/kai-roper-blackman/">
+          <a
+            href="https://www.linkedin.com/in/kai-roper-blackman/"
+            target="_blank"
+          >
             <LinkedIn fontSize="large" />
           </a>
         </div>

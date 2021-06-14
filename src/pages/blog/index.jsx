@@ -16,7 +16,7 @@ const Index = ({ data }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <h1>All my blog posts</h1>
+      <h1>Blog</h1>
       {data.items.map(blogPost => {
         const { slug, title } = blogPost.fields;
         return (
