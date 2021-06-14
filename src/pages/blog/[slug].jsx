@@ -1,6 +1,9 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { getAllContentByID, getContentByID } from '../../utils/contentfulAPI';
 import marked from 'marked';
+import hljs from 'highlight.js';
+import 'highlight.js/styles/androidstudio.css';
+
 const fs = require('fs');
 const useStyles = makeStyles(theme => ({
   root: {
@@ -40,6 +43,12 @@ const BlogPost = ({ data }) => {
     'November',
     'December',
   ];
+  marked.setOptions({
+    langPrefix: 'hljs language-',
+    highlight: function (code) {
+      return hljs.highlightAuto(code, ['javascript']).value;
+    },
+  });
   return (
     <div className={classes.root}>
       <h1>{title}</h1>
