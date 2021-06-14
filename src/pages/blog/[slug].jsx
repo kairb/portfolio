@@ -16,6 +16,12 @@ const useStyles = makeStyles(theme => ({
       width: '100%',
     },
   },
+  header: {
+    borderBottom: '1px solid grey',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
   content: {
     marginTop: '20px',
     '& pre': {
@@ -53,12 +59,14 @@ const BlogPost = ({ data }) => {
   }, []);
   return (
     <div className={classes.root}>
-      <h1>{title}</h1>
-      <h2>{shortDescription}</h2>
-      <h3>{`Kai Roper-Blackman, ${
-        monthNames[date.getMonth()]
-      } ${date.getFullYear()}`}</h3>
-      <hr />
+      <div className={classes.header}>
+        <h1>{title}</h1>
+        <h2>{shortDescription}</h2>
+        <h3>{`Kai Roper-Blackman, ${
+          monthNames[date.getMonth()]
+        } ${date.getFullYear()}`}</h3>
+      </div>
+      {/* <hr /> */}
       <div
         className={classes.content}
         dangerouslySetInnerHTML={{ __html: marked(content) }}
