@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Link from 'next/link';
 import { LinkedIn, GitHub } from '@material-ui/icons';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -51,6 +52,9 @@ const useStyles = makeStyles(theme => ({
   link: {
     '&:hover': { cursor: 'pointer' },
   },
+  activeLink: {
+    color: 'black !important',
+  },
 }));
 
 const NavigationContent = ({ person, close, links }) => {
@@ -73,6 +77,8 @@ const NavigationContent = ({ person, close, links }) => {
   } = links;
   const imageWidth = 150;
   const imageHeight = image.height / (image.width / imageWidth);
+
+  const router = useRouter();
   return (
     <header className={classes.root}>
       <div className={classes.profile}>
@@ -101,7 +107,12 @@ const NavigationContent = ({ person, close, links }) => {
       <div className={classes.links}>
         {linkArray.map(({ name, slug }) => (
           <Link key={name} href={slug}>
-            <h1 className={classes.link} onClick={() => close(false)}>
+            <h1
+              className={`${classes.link} ${
+                router.pathname === slug ? classes.activeLink : ''
+              }`}
+              onClick={() => close(false)}
+            >
               {name}
             </h1>
           </Link>
