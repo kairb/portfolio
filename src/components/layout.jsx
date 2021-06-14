@@ -34,6 +34,14 @@ const useStyles = makeStyles({
         fontSize: '20px',
       },
     },
+    '& h4': {
+      fontSize: '12px',
+      fontWeight: 200,
+      margin: 0,
+      [theme.breakpoints.up('md')]: {
+        fontSize: '16px',
+      },
+    },
     '& p': {
       fontSize: '13px',
       fontWeight: 300,
