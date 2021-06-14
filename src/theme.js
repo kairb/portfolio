@@ -6,6 +6,7 @@ const theme = createMuiTheme({
     formValidationError: '#ff0000',
     blue: '#4a86e8',
     codeBackgroundColor: '#2b2b2b',
+    boxShadow:'0px 13px 15px rgba(169, 168, 167, 0.2)',
   },
 });
 export default theme;

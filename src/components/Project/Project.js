@@ -5,8 +5,8 @@ import theme from '../../theme';
 const useStyles = makeStyles({
   root: {
     backgroundColor: 'white',
-    borderRadius: '20px',
-    boxShadow: '0 0 8px #7f7f7f',
+    borderRadius: '10px',
+    boxShadow: theme.palette.boxShadow,
     padding: '20px',
     display: 'flex',
     flexDirection: 'column',
@@ -23,6 +23,7 @@ const useStyles = makeStyles({
     [theme.breakpoints.up('md')]: {
       justifyContent: 'flex-start',
       alignItems: 'flex-start',
+      textAlign: 'start',
     },
   },
   info: {
