@@ -1,6 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import theme from '../../theme';
+import { getShortDate } from '../../utils/date';
 
 const useStyles = makeStyles({
   root: {
@@ -71,13 +72,6 @@ const useStyles = makeStyles({
   },
 });
 
-const convertDate = iso => {
-  const date = new Date(iso);
-  return `${date.toLocaleString('default', {
-    month: 'short',
-  })} ${date.getFullYear()}`;
-};
-
 const Project = ({ project }) => {
   const classes = useStyles();
   const { company, role, from, to, description, technologies, companyLogo } =
@@ -97,7 +91,7 @@ const Project = ({ project }) => {
         <div className={classes.title}>
           <h1>{company}</h1>
           <h2>{role}</h2>
-          <h3>{`${convertDate(from)} - ${convertDate(to)}`}</h3>
+          <h3>{`${getShortDate(from)} - ${getShortDate(to)}`}</h3>
         </div>
         <div className={classes.info}>
           <div className={classes.tech}>
