@@ -20,7 +20,6 @@ const useStyles = makeStyles(theme => ({
 
 const BlogCard = ({ blogPost }) => {
   const classes = useStyles();
-  console.log(blogPost);
   const { title, shortDescription, slug } = blogPost;
   return (
     <Link href={`/blog/${slug}`}>
