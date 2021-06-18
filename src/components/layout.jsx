@@ -5,10 +5,10 @@ import theme from '../theme';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import DesktopNav from './DesktopNav/DesktopNav';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   app: {
     position: 'relative',
-    backgroundColor: '#E9EDEE',
+    backgroundColor: theme.palette.background,
     fontFamily: 'Poppins, sans-serif',
     '& h1': {
       fontSize: '32px',
@@ -59,7 +59,7 @@ const useStyles = makeStyles({
       marginLeft: '320px',
     },
   },
-});
+}));
 
 const Layout = ({ children, person, links }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
