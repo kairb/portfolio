@@ -1,42 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { getContentByID } from '../utils/contentfulAPI';
+import BallBackground from '../components/BallBackground';
 
 const useStyles = makeStyles({
   homePage: {
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-  },
-  greetingContainer: {
-    marginBottom: '30px',
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-  },
-  image: {
-    zIndex: '2',
-    height: '400px',
-    width: '400px',
-    borderRadius: '50%',
+    height: '100vh',
+    width: '100%',
   },
 });
 
-const Index = ({ data }) => {
-  const { line1, line2, line3 } = data;
+const Index = () => {
   const classes = useStyles();
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  useEffect(() => {
+    const el = document.getElementById('home');
+    setDimensions({ width: el.offsetWidth, height: el.offsetHeight });
+  }, []);
   return (
-    <>
-      <div className={classes.homePage}>
-        <div className={classes.greetingContainer}>
-          <h1>{line1}</h1> 
-          <h1>{line2}</h1>
-          <h1>{line3}</h1>
-        </div>
-      </div>
-    </>
+    <div id="home" className={classes.homePage}>
+      <BallBackground width={dimensions.width} height={dimensions.height} />
+    </div>
   );
 };
 
