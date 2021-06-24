@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const BallBackground = ({ width: MAX_WIDTH, height: MAX_HEIGHT }) => {
+const BallBackground = ({ width: MAX_WIDTH, height: MAX_HEIGHT, key }) => {
   const MIN_BALL_RADIUS = 5;
   const MAX_BALL_RADIUS = 25;
   const MIN_BALL_VELOCITY = -1;
@@ -100,7 +100,11 @@ const BallBackground = ({ width: MAX_WIDTH, height: MAX_HEIGHT }) => {
   if (typeof window !== 'undefined') {
     // only import react-p5 when client side
     const Sketch = require('react-p5');
-    return <Sketch setup={setup} draw={draw} />;
+    return (
+      <>
+        <Sketch setup={setup} draw={draw} />
+      </>
+    );
   }
   return null;
 };

@@ -12,14 +12,34 @@ const useStyles = makeStyles({
 
 const Index = () => {
   const classes = useStyles();
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [dimensions, setDimensions] = useState({
+    width: 0,
+    height: 0,
+    key: Math.random(),
+  });
   useEffect(() => {
     const el = document.getElementById('home');
-    setDimensions({ width: el.offsetWidth, height: el.offsetHeight });
-  }, []);
+    setDimensions({
+      width: el.offsetWidth,
+      height: el.offsetHeight,
+      key: Math.random(),
+    });
+    function handleResize() {
+      setDimensions({
+        width: el.offsetWidth,
+        height: el.offsetHeight,
+        key: Math.random(),
+      });
+    }
+    window.addEventListener('resize', handleResize);
+  },[]);
   return (
     <div id="home" className={classes.homePage}>
-      <BallBackground width={dimensions.width} height={dimensions.height} />
+      <BallBackground
+        width={dimensions.width}
+        height={dimensions.height}
+        key={dimensions.key}
+      />
     </div>
   );
 };
