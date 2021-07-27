@@ -6,6 +6,7 @@ import Input from '../Input/Input';
 import emailjs from 'emailjs-com';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles({
   form: {
@@ -22,6 +23,15 @@ const useStyles = makeStyles({
     '&rc-anchor-container': {
       width: '300px',
     },
+    '& button': {
+      height: '74px',
+      width: '100%',
+      // borderRadius: '8px',
+      [theme.breakpoints.up('md')]: {
+        // width: '304px',
+        width: '50%',
+      },
+    },
   },
   row: {
     width: '100%',
@@ -36,17 +46,6 @@ const useStyles = makeStyles({
       '& :nth-child(2)': {
         paddingLeft: '5px',
       },
-    },
-  },
-
-  button: {
-    height: '74px',
-    width: '100%',
-    backgroundColor: theme.palette.buttonColor,
-    borderRadius: '8px',
-    [theme.breakpoints.up('md')]: {
-      width: '304px',
-      width: '50%',
     },
   },
 });
@@ -116,10 +115,14 @@ const ContactForm = ({ setSubmitted }) => {
         error={errors.message}
         errorMessage="Please enter a message"
       />
-
-      <button type="submit" className={classes.button} disabled={isSubmitting}>
+      <Button
+        variant="contained"
+        color="primary"
+        type="submit"
+        disabled={isSubmitting}
+      >
         {isSubmitting ? <CircularProgress /> : 'Submit'}
-      </button>
+      </Button>
 
       <ReCAPTCHA
         ref={recaptchaRef}

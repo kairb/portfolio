@@ -45,7 +45,16 @@ const useStyles = makeStyles(theme => ({
     '& p': {
       fontSize: '13px',
       fontWeight: 300,
+      margin: '6px 0px 0px 0px',
+      [theme.breakpoints.up('md')]: {
+        fontSize: '16px',
+        margin: '8px 0px 0px 0px',
+      },
+    },
+    '& ul': {
+      fontSize: '13px',
       margin: 0,
+      fontWeight: 300,
       [theme.breakpoints.up('md')]: {
         fontSize: '16px',
       },

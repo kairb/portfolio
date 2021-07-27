@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     padding: '20px',
     height: '100vh',
-    background: `linear-gradient(345deg, ${theme.palette.blue} 50%, ${theme.palette.background} 50%)`,
+    // background: `linear-gradient(345deg, ${theme.palette.blue} 50%, ${theme.palette.background} 50%)`,
     textAlign: 'center',
   },
   contact: {

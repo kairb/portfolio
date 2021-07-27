@@ -25,6 +25,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     alignItems: 'center',
     textAlign: 'center',
+    marginBottom: '10px',
   },
 }));
 const BlogPost = ({ data }) => {
